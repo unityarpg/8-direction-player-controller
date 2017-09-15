@@ -20,13 +20,13 @@
 
 根據這個思路，我們可以把按鍵製作成一組向量並讓人物根據這個向量來決定正面要朝哪並往正面移動，如此一來我們就不用逐一判斷所有按鍵，只要將按鍵組合成向量後就能讓人物根據這個向量進行移動了。
 
-在按鍵偵測上，本系統使用Input.GetAxisRaw來取得按鍵值，Input.GetAxisRaw("Horizontal")會取得-1/0/1三種值，分別為按下W/沒按/按下D。
+在按鍵偵測上，本系統使用Input.GetAxisRaw來取得按鍵值，Input.GetAxisRaw("Horizontal")會取得-1/0/1三種值，分別為按下A/沒按/按下D。
 
-而Input.GetAxisRaw("Vertical")當然就是W、S了，有了按鍵值後，我們就能按照下列方式組成一個3維向量：
+而Input.GetAxisRaw("Vertical")當然就是W、S了，在獲得按鍵值後，我們就能按照下列方式組成一個3維向量：
 
 Vector3 PlayerDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-有了移動向量後，再來就只要命令人物往這個向量的方向看，然後叫它朝著「正面」移動，這樣整個控制系統就完成了。
+這樣就有了移動向量，再來就只要命令人物往這個向量的方向看，然後叫它朝著「正面」移動，這樣整個控制系統就完成了。
 
 整個核心程式碼就下列三行：
 
