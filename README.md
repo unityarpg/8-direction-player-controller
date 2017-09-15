@@ -1,2 +1,2 @@
-# 8-direction-player-controller
+# 8方向主角控制系統
 Unity 系統 - 8方向主角控制
