@@ -1,15 +1,13 @@
 # Unity 系統展示 - 8方向主角控制系統
 這個系統展示主要是要讓玩家在 Unity 裡能夠操控主角往 8 種方向進行移動，你可以用WASD或方向鍵來操控主角並且可往對角方向移動。
 
-在開發這個控制系統展示之前，我有上網看過其他人所寫的角色操控方式，其思路不外乎就是判斷KeyCode然後決定transform的向量並移動人物。
+在開發這個控制系統展示之前，我有稍微看了一下其他人所寫的角色操控方式，其思路不外乎就是判斷KeyCode然後決定transform的向量並移動人物。
 
 例如按下W就往前移動多少，按下D就往右移動多少，所以4個按鍵總共要寫4次判斷。
 
-這個方法沒有不好，只是很麻煩，每一個方向都要判斷一次，有的不會寫switch就會看到畫面上滿滿的if和else if...
+這個方法沒有不好，只是很麻煩，不僅在面向的操控上不太方便，而每一個方向都要判斷一次，有的不會寫switch就會看到畫面上滿滿的if...
 
-至於8個方向就更難寫了，除了判斷單一按鍵外還要判斷組合鍵，例如WA、WD、SD等，一個判斷沒寫好就會搞砸。
-
-有沒有什麼方法可以讓8種方向的按鍵組合都通吃，還不需要用一堆if判斷按鍵就能完美地移動人物？
+有沒有什麼方法可以讓8種方向的按鍵組合都通用，還不需要用一堆if判斷按鍵就能完美地移動人物，如此一來就不用每次開新專案都要為了一個基本的移動系統而寫一長串的程式碼？
 
 # 原理介紹
 玩家透過按鍵操控人物往哪一個方向走時，遊戲人物是利用向量來決定行走距離以及方向的。
@@ -32,7 +30,7 @@ Vector3 PlayerDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.G
 
 Vector3 PlayerDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-this.transform.rotation = Quaternion.LookRotation(PlayerDirection);
+transform.rotation = Quaternion.LookRotation(PlayerDirection);
 
 PlayerController.SimpleMove(PlayerDirection * PlayerMoveSpeed);
 
